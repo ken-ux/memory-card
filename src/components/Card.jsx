@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import "../styles/Card.css";
 
-function Card({ pokemonName }) {
+function Card({ pokemonName, handleClick }) {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function Card({ pokemonName }) {
   }, [pokemonName]);
 
   return (
-    <div className="pokemon-card">
+    <div className="pokemon-card" onClick={() => handleClick(pokemonName)}>
       <h2>{pokemonName}</h2>
       <img src={imageUrl} alt={pokemonName} />
     </div>
@@ -37,6 +37,7 @@ function Card({ pokemonName }) {
 
 Card.propTypes = {
   pokemonName: PropTypes.string,
+  handleClick: PropTypes.func,
 };
 
 export default Card;
