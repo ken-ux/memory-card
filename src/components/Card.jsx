@@ -15,7 +15,7 @@ function Card({ pokemonName }) {
           "https://pokeapi.co/api/v2/pokemon/" + pokemonName
         );
         const data = await response.json();
-        const picture = data.sprites.back_default;
+        const picture = data.sprites.other["official-artwork"].front_default;
         setImageUrl(picture);
       }
     }
