@@ -7,6 +7,20 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedPokemon, setClickedPokemon] = useState([]);
+  const [pokemonList, setPokemonList] = useState([
+    "bulbasaur",
+    "charmander",
+    "squirtle",
+    "chikorita",
+    "cyndaquil",
+    "totodile",
+    "turtwig",
+    "chimchar",
+    "piplup",
+    "snivy",
+    "tepig",
+    "oshawott",
+  ]);
 
   if (score > bestScore) {
     setBestScore(score);
@@ -21,23 +35,21 @@ function App() {
       copy.push(pokemonName);
       setClickedPokemon(copy);
       setScore(score + 1);
+      randomizePokemonList();
     }
   };
 
-  const pokemonList = [
-    "bulbasaur",
-    "charmander",
-    "squirtle",
-    "chikorita",
-    "cyndaquil",
-    "totodile",
-    "turtwig",
-    "chimchar",
-    "piplup",
-    "snivy",
-    "tepig",
-    "oshawott",
-  ];
+  const randomizePokemonList = () => {
+    const randomizedList = [];
+    const keys = pokemonList.map((pokemon, index) => index);
+    while (keys.length > 0) {
+      const randomKey = Math.floor(Math.random() * keys.length);
+      const splicedKey = keys.splice(randomKey, 1);
+      const pokemon = pokemonList[splicedKey];
+      randomizedList.push(pokemon);
+    }
+    setPokemonList([...randomizedList]);
+  };
 
   return (
     <>
@@ -45,6 +57,11 @@ function App() {
       <p>
         Get points by clicking on an image but don&apos;t click on any more than
         once!
+      </p>
+      <p>
+        {bestScore === pokemonList.length
+          ? "Congrats! You were able to remember every Pokémon here!"
+          : ""}
       </p>
       <Scoreboard score={score} bestScore={bestScore} />
       <div className="cards">
@@ -60,12 +77,6 @@ function App() {
           );
         })}
       </div>
-      {/* <button type="button" onClick={() => setScore(score + 1)}>
-        Add to Score
-      </button>
-      <button type="button" onClick={() => setScore(0)}>
-        Reset Score
-      </button> */}
     </>
   );
 }
