@@ -5,3 +5,7 @@
 .pokemon-card h2 {
   text-transform: capitalize;
 }
+
+.pokemon-card img {
+  width: 100%;
+}
