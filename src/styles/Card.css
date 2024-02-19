@@ -1,5 +1,10 @@
+:root {
+  --fire: #ee8130;
+  --water: #6390f0;
+  --grass: #7ac74c;
+}
 .pokemon-card {
-  border: 1px solid red;
+  border: 1px solid #213547;
 }
 
 .pokemon-card h2 {
@@ -8,4 +13,32 @@
 
 .pokemon-card img {
   width: 100%;
+}
+
+.fire {
+  background-color: var(--fire);
+}
+
+.water {
+  background-color: var(--water);
+}
+
+.grass {
+  background-color: var(--grass);
+}
+
+.pokemon-card:hover {
+  cursor: pointer;
+}
+
+.pokemon-card.fire:hover {
+  box-shadow: 0px 0px 16px var(--fire);
+}
+
+.pokemon-card.water:hover {
+  box-shadow: 0px 0px 16px var(--water);
+}
+
+.pokemon-card.grass:hover {
+  box-shadow: 0px 0px 16px var(--grass);
 }

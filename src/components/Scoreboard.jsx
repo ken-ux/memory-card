@@ -1,10 +1,15 @@
 import PropTypes from "prop-types";
+import "../styles/Scoreboard.css";
 
 function Scoreboard({ score, bestScore }) {
   return (
-    <div>
-      <p>Score: {score}</p>
-      <p>Best Score: {bestScore}</p>
+    <div className="scoreboard">
+      <p>
+        <span>Score</span>: {score}
+      </p>
+      <p>
+        <span>Best Score</span>: {bestScore}
+      </p>
     </div>
   );
 }

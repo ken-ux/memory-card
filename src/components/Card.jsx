@@ -5,6 +5,7 @@ import "../styles/Card.css";
 
 function Card({ pokemonName, handleClick }) {
   const [imageUrl, setImageUrl] = useState("");
+  const [type, setType] = useState("");
 
   useEffect(() => {
     let ignore = false;
@@ -16,7 +17,9 @@ function Card({ pokemonName, handleClick }) {
         );
         const data = await response.json();
         const picture = data.sprites.other["official-artwork"].front_default;
+        const pokemonType = data.types[0].type.name;
         setImageUrl(picture);
+        setType(pokemonType);
       }
     }
 
@@ -28,7 +31,10 @@ function Card({ pokemonName, handleClick }) {
   }, [pokemonName]);
 
   return (
-    <div className="pokemon-card" onClick={() => handleClick(pokemonName)}>
+    <div
+      className={`pokemon-card ${type}`}
+      onClick={() => handleClick(pokemonName)}
+    >
       <h2>{pokemonName}</h2>
       <img src={imageUrl} alt={pokemonName} />
     </div>
