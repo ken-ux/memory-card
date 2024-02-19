@@ -28,6 +28,7 @@ function App() {
 
   const handleClick = (pokemonName) => {
     if (clickedPokemon.includes(pokemonName)) {
+      alert("You already clicked that Pokémon!");
       setScore(0);
       setClickedPokemon([]);
     } else {
