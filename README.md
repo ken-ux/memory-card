@@ -1,4 +1,4 @@
-# memory-game
+# memory-card
 
 This is a web implementation of a memory game built with React. The main goals of this project were to use hooks to manage and utilize state while fetching and using data from an external API. The [PokéAPI](https://pokeapi.co/) was used for this project.
 
